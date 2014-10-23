@@ -3,6 +3,9 @@ package org.gnw.mktsim.exchange;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class OrderBook {
 
     private final Instrument imnt;
@@ -16,15 +19,24 @@ public class OrderBook {
     private int              numBuys;
     private int              numSells;
 
+    private final Logger     log = LoggerFactory.getLogger(this.getClass());
+
     public OrderBook(final Instrument imnt) {
         super();
         this.imnt = imnt;
         this.numBuys = 0;
         this.numSells = 0;
         buildPriceLadder(100);
-    };
+        if (log.isInfoEnabled()) {
+            log.info("{}: Order book initialised with {} ticks across range {}-{} with tick size {}", imnt.getSymbol(),
+                    priceLadder.length, ladderBottom, ladderBottom + priceLadder.length * ladderTick, ladderTick);
+        }
+    }
 
     public void addOrder(Order order) {
+        if (log.isDebugEnabled()) {
+            log.debug("{}: Received order - {}", imnt.getSymbol(), order);
+        }
         int i = getLadderPoint(order.getPrice());
         if (order.isBuy()) {
             if (i >= this.bestSell) {
@@ -103,8 +115,10 @@ public class OrderBook {
         incomingOrder.trade(quantity, price);
         bookOrder.trade(quantity, price);
         // Report the trade
-        System.out.println("Trade of " + quantity + " at " + price + " between " + incomingOrder.getPartyId() + " and "
-                + bookOrder.getPartyId());
+        if (log.isDebugEnabled()) {
+            log.debug("{}: Trade of {} at {} between {} and {}", imnt.getSymbol(), quantity, price,
+                    incomingOrder.getPartyId(), bookOrder.getPartyId());
+        }
         // Update the instrument
         this.imnt.setLastPrice(price);
         // If the bookOrder is now cleaned, then we need to remove it from the
