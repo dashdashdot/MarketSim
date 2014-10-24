@@ -63,8 +63,12 @@ public class Order {
 
     public String toString() {
         StringBuilder output = new StringBuilder();
+        output.append(this.partyId);
+        output.append("[ID=");
+        output.append(this.partyOrderId);
+        output.append((this.isBuy ? "] B " : "] S "));
         output.append(this.imnt.getSymbol());
-        output.append((this.isBuy ? " B " : " S "));
+        output.append(" ");
         output.append(Long.toString(this.quantity));
         output.append("@");
         output.append(Double.toString(this.price));

@@ -114,11 +114,6 @@ public class OrderBook {
         double price = bookOrder.getPrice();
         incomingOrder.trade(quantity, price);
         bookOrder.trade(quantity, price);
-        // Report the trade
-        if (log.isDebugEnabled()) {
-            log.debug("{}: Trade of {} at {} between {} and {}", imnt.getSymbol(), quantity, price,
-                    incomingOrder.getPartyId(), bookOrder.getPartyId());
-        }
         // Update the instrument
         this.imnt.setLastPrice(price);
         // If the bookOrder is now cleaned, then we need to remove it from the
@@ -137,6 +132,11 @@ public class OrderBook {
                     bestSell++;
                 }
             }
+        }
+        // Report the trade
+        if (log.isDebugEnabled()) {
+            log.debug("{}: Trade of {} at {} between {} and {}", imnt.getSymbol(), quantity, price,
+                    incomingOrder.getPartyId(), bookOrder.getPartyId());
         }
     }
 
