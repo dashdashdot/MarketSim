@@ -2,7 +2,14 @@ package org.gnw.mktsim.exchange;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
+/**
+ * An exchange is a collection of markets.
+ * 
+ * @author Gerard Whitehead
+ *
+ */
 public class Exchange {
 
     public final String              name;
@@ -37,5 +44,9 @@ public class Exchange {
 
     public Market getMarket(String name) {
         return this.markets.get(name);
+    }
+    
+    public Set<String> getMarkets() {
+        return markets.keySet();
     }
 }

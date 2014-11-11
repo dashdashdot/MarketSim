@@ -1,21 +1,17 @@
 package org.gnw.mktsim.exchange;
 
-public class Order {
+public class Order extends OrderBookEvent implements Cloneable {
 
-    private final String     partyId;
-    private final long       partyOrderId;
-    private final Instrument imnt;
+    private final String     partyOrderId;
     private final boolean    isBuy;
     private long             quantity;
     private double           price;
     private long             tradedQuantity;
     private double           tradedValue;
 
-    public Order(String partyId, long partyOrderId, Instrument imnt, boolean isBuy, long quantity, double price) {
-        super();
-        this.partyId = partyId;
+    public Order(String partyId, String partyOrderId, Instrument imnt, boolean isBuy, long quantity, double price) {
+        super(partyId,imnt);
         this.partyOrderId = partyOrderId;
-        this.imnt = imnt;
         this.isBuy = isBuy;
         this.quantity = quantity;
         this.price = price;
@@ -23,6 +19,15 @@ public class Order {
         this.tradedValue = 0.0;
     }
 
+    public Order ( Order order ) {
+        this(order.getSender().getId(),order.partyOrderId,order.getInstrument(),order.isBuy,order.quantity,order.price);   
+    }
+    
+    @Override
+    public Order clone() {
+        return new Order(this);
+    }
+    
     public double getPrice() {
         return this.price;
     }
@@ -53,21 +58,17 @@ public class Order {
         }
     }
 
-    public String getPartyId() {
-        return partyId;
-    }
-
-    public long getPartyOrderId() {
+    public String getPartyOrderId() {
         return partyOrderId;
     }
 
     public String toString() {
         StringBuilder output = new StringBuilder();
-        output.append(this.partyId);
+        output.append(this.getSender().getId());
         output.append("[ID=");
         output.append(this.partyOrderId);
         output.append((this.isBuy ? "] B " : "] S "));
-        output.append(this.imnt.getSymbol());
+        output.append(this.getInstrument().getSymbol());
         output.append(" ");
         output.append(Long.toString(this.quantity));
         output.append("@");

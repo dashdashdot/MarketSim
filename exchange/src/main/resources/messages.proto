@@ -1,0 +1,69 @@
+syntax = "proto2";
+
+package org.gnw.mktsim.exchange.msg;
+
+option java_package = "org.gnw.mktsim.exchange.msg";
+message Timestamp {
+	optional int32 year = 1 [default = 0];
+	optional int32 month = 2 [default = 0];
+	optional int32 day = 3 [default = 0];
+	optional int32 hours = 4 [default = 0];
+	optional int32 minutes = 5 [default = 0];
+	optional int32 seconds = 6 [default = 0];
+	optional int32 milliseconds = 7 [default = 0];
+	optional string timezone = 8;
+}
+
+message Sender {
+	required string senderId = 1;
+	required int64 senderSeqNum = 2;
+	required Timestamp senderTimestamp = 3;
+}
+
+message OrderMsg {
+	required Sender sender = 1;
+	required string clientOrderId = 2;
+	required string symbol = 3;
+	required bool isBuy = 4;
+	required int64 quantity = 5;
+	optional double price = 6;
+}
+
+message CancelOrderMsg {
+	required Sender sender = 1;
+	required string clientOrderId = 2;
+}
+
+message OrderAckMsg {
+	required Sender sender = 1;
+	required string clientOrderId = 2;
+	optional string message = 3;
+}
+
+message OrderNAckMsg {
+	required Sender sender = 1;
+	required string clientOrderId = 2;
+	optional string message = 3;
+}
+
+message TradeMsg {
+	required Sender sender = 1;
+	required string symbol = 2;
+	required int64 quantity = 3;
+	required double price = 4;
+	optional string clientId_buy = 5;
+	optional string clientId_sell = 6;
+	optional string clientOrderId_buy = 7;
+	optional string clientOrderId_sell = 8;
+}
+
+message MarketStatusMsg {
+	enum Status {
+		CLOSED = 0;
+		OPEN = 1;
+		AUCTION = 2;
+	}
+
+	required Sender sender = 1;
+	required Status status = 2;
+}

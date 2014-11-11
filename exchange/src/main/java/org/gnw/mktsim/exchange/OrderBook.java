@@ -2,27 +2,32 @@ package org.gnw.mktsim.exchange;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.concurrent.LinkedTransferQueue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class OrderBook {
 
-    private final Instrument imnt;
-    private double[]         priceLadder;
-    private Queue<Order>[]   buyLadder;
-    private Queue<Order>[]   sellLadder;
-    private double           ladderBottom;
-    private double           ladderTick;
-    private int              bestBuy;
-    private int              bestSell;
-    private int              numBuys;
-    private int              numSells;
+    private final String                              senderId;
+    private final Instrument                          imnt;
+    private double[]                                  priceLadder;
+    private Queue<Order>[]                            buyLadder;
+    private Queue<Order>[]                            sellLadder;
+    private double                                    ladderBottom;
+    private double                                    ladderTick;
+    private int                                       bestBuy;
+    private int                                       bestSell;
+    private int                                       numBuys;
+    private int                                       numSells;
+    private final LinkedTransferQueue<OrderBookEvent> outbound;
 
-    private final Logger     log = LoggerFactory.getLogger(this.getClass());
+    private final Logger                              log = LoggerFactory.getLogger(this.getClass());
 
-    public OrderBook(final Instrument imnt) {
+    public OrderBook(final String senderId, final Instrument imnt) {
         super();
+        this.senderId = senderId;
+        this.outbound = new LinkedTransferQueue<OrderBookEvent>();
         this.imnt = imnt;
         this.numBuys = 0;
         this.numSells = 0;
@@ -37,20 +42,39 @@ public class OrderBook {
         if (log.isDebugEnabled()) {
             log.debug("{}: Received order - {}", imnt.getSymbol(), order);
         }
-        int i = getLadderPoint(order.getPrice());
-        if (order.isBuy()) {
-            if (i >= this.bestSell) {
-                hitSells(this.bestSell, i, order);
+        if (isValidOrder(order)) {
+            sendAck(order);
+            addToOutboundQueue(order.clone());
+            int i = getLadderPoint(order.getPrice());
+            if (order.isBuy()) {
+                if (i >= this.bestSell) {
+                    hitSells(this.bestSell, i, order);
+                } else {
+                    joinBids(i, order);
+                }
             } else {
-                joinBids(i, order);
+                if (i <= this.bestBuy) {
+                    hitBuys(this.bestBuy, i, order);
+                } else {
+                    joinSells(i, order);
+                }
             }
         } else {
-            if (i <= this.bestBuy) {
-                hitBuys(this.bestBuy, i, order);
-            } else {
-                joinSells(i, order);
-            }
+            sendNack(order);
         }
+    }
+
+    private boolean isValidOrder(Order order) {
+        // TODO implement some logic here!
+        return true;
+    }
+
+    private void sendAck(Order order) {
+        // TODO Send an ack
+    }
+
+    private void sendNack(Order order) {
+        // TODO Send a Nack
     }
 
     private void hitBuys(int atPoint, int maxPoint, Order sell) {
@@ -134,9 +158,13 @@ public class OrderBook {
             }
         }
         // Report the trade
+        addToOutboundQueue(new Trade(this.senderId, incomingOrder, bookOrder, quantity, price));
+    }
+
+    private void addToOutboundQueue(OrderBookEvent event) {
+        outbound.put(event);
         if (log.isDebugEnabled()) {
-            log.debug("{}: Trade of {} at {} between {} and {}", imnt.getSymbol(), quantity, price,
-                    incomingOrder.getPartyId(), bookOrder.getPartyId());
+            log.debug("Adding to queue: {}", event);
         }
     }
 

@@ -9,8 +9,8 @@ public class TestOrderBook {
     @Test
     public void testAddSingleOrder() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order buy1 = new Order("TEST1", 1L, imnt, true, 100L, 98.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order buy1 = new Order("TEST1", "1", imnt, true, 100L, 98.0);
         book.addOrder(buy1);
         assertEquals(1, book.size());
     }
@@ -18,9 +18,9 @@ public class TestOrderBook {
     @Test
     public void testAddTwoBuysLowThenHigh() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order buy1 = new Order("TEST1", 1L, imnt, true, 100L, 98.0);
-        Order buy2 = new Order("TEST2", 1L, imnt, true, 100L, 102.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order buy1 = new Order("TEST1", "1", imnt, true, 100L, 98.0);
+        Order buy2 = new Order("TEST2", "1", imnt, true, 100L, 102.0);
         book.addOrder(buy1);
         book.addOrder(buy2);
         assertEquals(2, book.size());
@@ -30,9 +30,9 @@ public class TestOrderBook {
     @Test
     public void testAddTwoBuysHighThenLow() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order buy1 = new Order("TEST1", 1L, imnt, true, 100L, 98.0);
-        Order buy2 = new Order("TEST2", 1L, imnt, true, 100L, 102.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order buy1 = new Order("TEST1", "1", imnt, true, 100L, 98.0);
+        Order buy2 = new Order("TEST2", "1", imnt, true, 100L, 102.0);
         book.addOrder(buy2);
         book.addOrder(buy1);
         assertEquals(2, book.size());
@@ -42,9 +42,9 @@ public class TestOrderBook {
     @Test
     public void testAddTwoSellsLowThenHigh() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order sell1 = new Order("TEST1", 1L, imnt, false, 100L, 98.0);
-        Order sell2 = new Order("TEST2", 1L, imnt, false, 100L, 102.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order sell1 = new Order("TEST1", "1", imnt, false, 100L, 98.0);
+        Order sell2 = new Order("TEST2", "1", imnt, false, 100L, 102.0);
         book.addOrder(sell1);
         book.addOrder(sell2);
         assertEquals(2, book.size());
@@ -54,9 +54,9 @@ public class TestOrderBook {
     @Test
     public void testAddTwoSellsHighThenLow() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order sell1 = new Order("TEST1", 1L, imnt, false, 100L, 98.0);
-        Order sell2 = new Order("TEST2", 1L, imnt, false, 100L, 102.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order sell1 = new Order("TEST1", "1", imnt, false, 100L, 98.0);
+        Order sell2 = new Order("TEST2", "1", imnt, false, 100L, 102.0);
         book.addOrder(sell2);
         book.addOrder(sell1);
         assertEquals(2, book.size());
@@ -66,9 +66,9 @@ public class TestOrderBook {
     @Test
     public void testBuySellNoMatch() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order buy1 = new Order("TEST1", 1L, imnt, false, 100L, 98.0);
-        Order sell1 = new Order("TEST2", 1L, imnt, false, 100L, 102.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order buy1 = new Order("TEST1", "1", imnt, false, 100L, 98.0);
+        Order sell1 = new Order("TEST2", "1", imnt, false, 100L, 102.0);
         book.addOrder(buy1);
         book.addOrder(sell1);
         assertEquals(2, book.size());
@@ -77,9 +77,9 @@ public class TestOrderBook {
     @Test
     public void testBuySellPartialMatch() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order buy1 = new Order("TEST1", 1L, imnt, true, 100L, 98.0);
-        Order sell1 = new Order("TEST2", 1L, imnt, false, 50L, 98.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order buy1 = new Order("TEST1", "1", imnt, true, 100L, 98.0);
+        Order sell1 = new Order("TEST2", "1", imnt, false, 50L, 98.0);
         book.addOrder(buy1);
         book.addOrder(sell1);
         assertEquals(1, book.size());
@@ -88,10 +88,10 @@ public class TestOrderBook {
     @Test
     public void testBuyBuySellPartialMatch() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order buy1 = new Order("TEST1", 1L, imnt, true, 25L, 98.0);
-        Order buy2 = new Order("TEST2", 1L, imnt, true, 100L, 98.0);
-        Order sell1 = new Order("TEST3", 1L, imnt, false, 50L, 98.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order buy1 = new Order("TEST1", "1", imnt, true, 25L, 98.0);
+        Order buy2 = new Order("TEST2", "1", imnt, true, 100L, 98.0);
+        Order sell1 = new Order("TEST3", "1", imnt, false, 50L, 98.0);
         book.addOrder(buy1);
         book.addOrder(buy2);
         book.addOrder(sell1);
@@ -110,23 +110,23 @@ public class TestOrderBook {
     @Test
     public void testImntPrice() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        book.addOrder(new Order("TEST1", 1L, imnt, true, 25L, 100.0));
-        book.addOrder(new Order("TEST2", 1L, imnt, true, 100L, 99.0));
-        book.addOrder(new Order("TEST3", 1L, imnt, false, 50L, 98.0));
+        OrderBook book = new OrderBook("CBOT", imnt);
+        book.addOrder(new Order("TEST1", "1", imnt, true, 25L, 100.0));
+        book.addOrder(new Order("TEST2", "1", imnt, true, 100L, 99.0));
+        book.addOrder(new Order("TEST3", "1", imnt, false, 50L, 98.0));
         assertEquals(99.0, imnt.getLastPrice(), 0.01);
     }
 
     @Test
     public void testBuyBuyBuyBuySellDrill() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order buy1 = new Order("TEST1", 1L, imnt, true, 25L, 98.0);
-        Order buy2 = new Order("TEST2", 1L, imnt, true, 100L, 98.0);
-        Order buy3 = new Order("TEST3", 1L, imnt, true, 100L, 99.0); // Best bid
-        Order buy4 = new Order("TEST4", 1L, imnt, true, 100L, 97.0);
-        Order buy5 = new Order("TEST5", 1L, imnt, true, 100L, 97.5);
-        Order sell1 = new Order("TEST6", 1L, imnt, false, 300L, 98.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order buy1 = new Order("TEST1", "1L", imnt, true, 25L, 98.0);
+        Order buy2 = new Order("TEST2", "1L", imnt, true, 100L, 98.0);
+        Order buy3 = new Order("TEST3", "1L", imnt, true, 100L, 99.0); // Best bid
+        Order buy4 = new Order("TEST4", "1L", imnt, true, 100L, 97.0);
+        Order buy5 = new Order("TEST5", "1L", imnt, true, 100L, 97.5);
+        Order sell1 = new Order("TEST6", "1L", imnt, false, 300L, 98.0);
         book.addOrder(buy1);
         book.addOrder(buy2);
         book.addOrder(buy3);
@@ -147,13 +147,13 @@ public class TestOrderBook {
     @Test
     public void testBuyBuyBuyBuySellDrillAllThru() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.5);
-        OrderBook book = new OrderBook(imnt);
-        Order buy1 = new Order("TEST1", 1L, imnt, true, 25L, 98.0);
-        Order buy2 = new Order("TEST2", 1L, imnt, true, 100L, 98.0);
-        Order buy3 = new Order("TEST3", 1L, imnt, true, 100L, 99.0); // Best bid
-        Order buy4 = new Order("TEST4", 1L, imnt, true, 100L, 97.0);
-        Order buy5 = new Order("TEST5", 1L, imnt, true, 100L, 97.5);
-        Order sell1 = new Order("TEST6", 1L, imnt, false, 500L, 96.0);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        Order buy1 = new Order("TEST1", "1L", imnt, true, 25L, 98.0);
+        Order buy2 = new Order("TEST2", "1L", imnt, true, 100L, 98.0);
+        Order buy3 = new Order("TEST3", "1L", imnt, true, 100L, 99.0); // Best bid
+        Order buy4 = new Order("TEST4", "1L", imnt, true, 100L, 97.0);
+        Order buy5 = new Order("TEST5", "1L", imnt, true, 100L, 97.5);
+        Order sell1 = new Order("TEST6", "1L", imnt, false, 500L, 96.0);
         book.addOrder(buy1);
         book.addOrder(buy2);
         book.addOrder(buy3);
