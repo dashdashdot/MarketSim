@@ -174,4 +174,14 @@ public class TestOrderBook {
         assertEquals(1, book.size());
     }
 
+    @Test
+    public void testResize() {
+        Instrument imnt = new Instrument("VOD.L", 100, 0.5);
+        OrderBook book = new OrderBook("CBOT", imnt);
+        book.addOrder(new Order("TEST1","XX",imnt,true,100L,100.0));
+        book.addOrder(new Order("TEST1","XX",imnt,true,100L,400.0));
+        Order sell = new Order("TEST2","AA",imnt,false,150L,50.0);
+        book.addOrder(sell);
+        assertEquals(0L, sell.getQuantity());
+    }
 }

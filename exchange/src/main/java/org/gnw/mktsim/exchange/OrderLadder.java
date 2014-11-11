@@ -5,8 +5,6 @@ import java.util.concurrent.LinkedTransferQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /**
  * Contains all the orders on one particular side of the order book, all the
  * buys for example. The ladder is an array of {@link OrderLadderPricePoint}
@@ -18,6 +16,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 class OrderLadder {
 
+    private final int                                 arrayScaler = 100;
     private final String                              senderId;
     private final Instrument                          imnt;
     private final boolean                             isBuy;
@@ -26,8 +25,8 @@ class OrderLadder {
     private int                                       bestPriceIndex;
     private double                                    ladderBottom;
     private double                                    ladderTick;
-    private int                                       numOrders = 0;
-    private final Logger                              log       = LoggerFactory.getLogger(this.getClass());
+    private int                                       numOrders   = 0;
+    private final Logger                              log         = LoggerFactory.getLogger(this.getClass());
 
     OrderLadder(String senderId, Instrument imnt, boolean isBuy, LinkedTransferQueue<OrderBookEvent> outbound) {
         super();
@@ -35,8 +34,8 @@ class OrderLadder {
         this.imnt = imnt;
         this.isBuy = isBuy;
         this.outbound = outbound;
-        build(100);
-        this.bestPriceIndex = ladder.length;
+        build(arrayScaler);
+        this.bestPriceIndex = Integer.MAX_VALUE;
     }
 
     /**
@@ -153,7 +152,10 @@ class OrderLadder {
             output = (int) ((price - ladderBottom) / ladderTick);
         }
         if (output < 0 || output >= ladder.length) {
-            output = resize(output);
+            resize(output);
+            if (output < 0) {
+                output = getLadderPoint(price);
+            }
         }
         return output;
     }
@@ -166,9 +168,38 @@ class OrderLadder {
         }
     }
 
-    private int resize(int newPointIndex) {
-        // TODO Resize the array to accommodate the new price point.
-        throw new NotImplementedException();
+    private void resize(int newPointIndex) {
+        // We need to resize the array to give us an extra set of scaling points
+        // in all directions.
+        if (newPointIndex > ladder.length) {
+            // Easier use case as we don't have to reset the pricing variables.
+            int newLength = newPointIndex + this.arrayScaler;
+            OrderLadderPricePoint[] newArray = new OrderLadderPricePoint[newLength];
+            System.arraycopy(this.ladder, 0, newArray, 0, ladder.length);
+            for (int i = ladder.length; i < newArray.length; i++) {
+                newArray[i] = new OrderLadderPricePoint(getPriceAtPoint(i));
+            }
+            this.ladder = newArray;
+        } else {
+            if (this.isBuy) {
+                this.ladderBottom += (this.arrayScaler - newPointIndex) * this.ladderTick;
+            } else {
+                this.ladderBottom -= (this.arrayScaler - newPointIndex) * this.ladderTick;
+            }
+            int newLength = ladder.length - newPointIndex + this.arrayScaler;
+            OrderLadderPricePoint[] newArray = new OrderLadderPricePoint[newLength];
+            for (int i = 0; i < this.arrayScaler - newPointIndex; i++) {
+                newArray[i] = new OrderLadderPricePoint(getPriceAtPoint(i));
+            }
+            System.arraycopy(this.ladder, 0, newArray, this.arrayScaler - newPointIndex, this.ladder.length);
+            this.bestPriceIndex += ladder.length - newPointIndex;
+            this.ladder = newArray;
+        }
+        if (log.isInfoEnabled()) {
+            log.info("{} book resized for {} with {} ticks across range {}-{} with tick size {}", (isBuy ? "Buy"
+                    : "Sell"), imnt.getSymbol(), ladder.length, ladderBottom,
+                    ladderBottom + ladder.length * ladderTick, ladderTick);
+        }
     }
 
     /**
