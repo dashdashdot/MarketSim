@@ -1,6 +1,5 @@
 package org.gnw.mktsim.exchange;
 
-
 public interface OrderBookListener {
 
     public void onNewOrder(Order newOrder);

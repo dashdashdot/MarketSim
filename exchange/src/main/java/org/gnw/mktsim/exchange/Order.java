@@ -2,15 +2,15 @@ package org.gnw.mktsim.exchange;
 
 public class Order extends OrderBookEvent implements Cloneable {
 
-    private final String     partyOrderId;
-    private final boolean    isBuy;
-    private long             quantity;
-    private double           price;
-    private long             tradedQuantity;
-    private double           tradedValue;
+    private final String  partyOrderId;
+    private final boolean isBuy;
+    private long          quantity;
+    private double        price;
+    private long          tradedQuantity;
+    private double        tradedValue;
 
     public Order(String partyId, String partyOrderId, Instrument imnt, boolean isBuy, long quantity, double price) {
-        super(partyId,imnt);
+        super(partyId, imnt);
         this.partyOrderId = partyOrderId;
         this.isBuy = isBuy;
         this.quantity = quantity;
@@ -19,15 +19,16 @@ public class Order extends OrderBookEvent implements Cloneable {
         this.tradedValue = 0.0;
     }
 
-    public Order ( Order order ) {
-        this(order.getSender().getId(),order.partyOrderId,order.getInstrument(),order.isBuy,order.quantity,order.price);   
+    public Order(Order order) {
+        this(order.getSender().getId(), order.partyOrderId, order.getInstrument(), order.isBuy, order.quantity,
+                order.price);
     }
-    
+
     @Override
     public Order clone() {
         return new Order(this);
     }
-    
+
     public double getPrice() {
         return this.price;
     }
@@ -82,4 +83,5 @@ public class Order extends OrderBookEvent implements Cloneable {
         }
         return output.toString();
     }
+
 }

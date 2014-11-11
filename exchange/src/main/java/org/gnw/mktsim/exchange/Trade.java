@@ -22,8 +22,8 @@ public class Trade extends OrderBookEvent {
     }
 
     public String toString() {
-        return String.format("%s: Trade of %,d at %,.2f between %s (buyer) and %s (seller)", getInstrument().getSymbol(),
-                quantity, price, clientId_buy, clientId_sell);
+        return String.format("%s: Trade of %,d at %,.2f between %s (buyer) and %s (seller)", getInstrument()
+                .getSymbol(), quantity, price, clientId_buy, clientId_sell);
     }
 
     public long getQuantity() {

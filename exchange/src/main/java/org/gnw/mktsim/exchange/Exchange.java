@@ -45,7 +45,7 @@ public class Exchange {
     public Market getMarket(String name) {
         return this.markets.get(name);
     }
-    
+
     public Set<String> getMarkets() {
         return markets.keySet();
     }
