@@ -95,6 +95,10 @@ class OrderLadder {
     }
 
     private void trade(Order incomingOrder, Order bookOrder, long quantity) {
+        if (log.isDebugEnabled()) {
+            log.debug("Trade of {}@{} between \"{}\" and \"{}\"", quantity, bookOrder.getPrice(), incomingOrder,
+                    bookOrder);
+        }
         // First update the incomingOrder
         double price = bookOrder.getPrice();
         incomingOrder.trade(quantity, price);
@@ -117,8 +121,8 @@ class OrderLadder {
 
     private void addToOutboundQueue(OrderBookEvent event) {
         outbound.put(event);
-        if (log.isDebugEnabled()) {
-            log.debug("Adding to queue: {}", event);
+        if (log.isTraceEnabled()) {
+            log.trace("Adding to queue: {}", event);
         }
     }
 
@@ -147,9 +151,9 @@ class OrderLadder {
     private int getLadderPoint(double price) {
         int output;
         if (isBuy) {
-            output = (int) ((ladderBottom - price) / ladderTick);
+            output = (int) (((ladderBottom - price) / ladderTick) + 0.5);
         } else {
-            output = (int) ((price - ladderBottom) / ladderTick);
+            output = (int) (((price - ladderBottom) / ladderTick) + 0.5);
         }
         if (output < 0 || output >= ladder.length) {
             resize(output);

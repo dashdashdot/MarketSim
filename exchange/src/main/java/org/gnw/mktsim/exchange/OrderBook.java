@@ -60,8 +60,8 @@ public class OrderBook {
 
     private void addToOutboundQueue(OrderBookEvent event) {
         outbound.put(event);
-        if (log.isDebugEnabled()) {
-            log.debug("Adding to queue: {}", event);
+        if (log.isTraceEnabled()) {
+            log.trace("Adding to queue: {}", event);
         }
     }
 
