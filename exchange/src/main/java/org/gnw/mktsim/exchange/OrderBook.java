@@ -72,4 +72,32 @@ public class OrderBook {
     public double getBestSellPrice() {
         return sells.getBestPrice();
     }
+
+    public int getNumTrades() {
+        return buys.getNumTrades() + sells.getNumTrades();
+    }
+
+    public long getVolumeTraded() {
+        return buys.getVolumeTraded() + sells.getVolumeTraded();
+    }
+
+    public double getNotionalTraded() {
+        return buys.getNotionalTraded() + sells.getNotionalTraded();
+    }
+
+    public double getAvgTradePrice() {
+        return getNotionalTraded() / getVolumeTraded();
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append(String.format("Instrument: %s Last=%,.2f VWAP=%,.4f n=%,d v=%,d", imnt.getSymbol(),
+                imnt.getLastPrice(), getAvgTradePrice(), getNumTrades(), getVolumeTraded()));
+        s.append(System.lineSeparator());
+        s.append("------------------------------------------------------------");
+        s.append(System.lineSeparator());
+        s.append(sells.toString());
+        s.append(buys.toString());
+        return s.toString();
+    }
 }

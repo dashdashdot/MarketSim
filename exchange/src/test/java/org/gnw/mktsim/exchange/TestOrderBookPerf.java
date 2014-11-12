@@ -2,6 +2,7 @@ package org.gnw.mktsim.exchange;
 
 import java.util.Random;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class TestOrderBookPerf {
@@ -18,6 +19,7 @@ public class TestOrderBookPerf {
             Order order = new Order("test1K", Integer.toString(i), imnt, side, quantity, price);
             book.addOrder(order);
         }
+        Assert.assertTrue(imnt.getLastPrice() > 0.0);
     }
 
 }

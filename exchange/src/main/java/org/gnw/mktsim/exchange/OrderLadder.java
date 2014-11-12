@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  */
 class OrderLadder {
 
-    private final int                                 arrayScaler = 100;
+    private final int                                 arrayScaler    = 100;
     private final String                              senderId;
     private final Instrument                          imnt;
     private final boolean                             isBuy;
@@ -25,8 +25,12 @@ class OrderLadder {
     private int                                       bestPriceIndex;
     private double                                    ladderBottom;
     private double                                    ladderTick;
-    private int                                       numOrders   = 0;
-    private final Logger                              log         = LoggerFactory.getLogger(this.getClass());
+    private int                                       numOrders      = 0;
+    private int                                       numTrades      = 0;
+    private long                                      volumeTraded   = 0L;
+    private double                                    notionalTraded = 0.0;
+
+    private final Logger                              log            = LoggerFactory.getLogger(this.getClass());
 
     OrderLadder(String senderId, Instrument imnt, boolean isBuy, LinkedTransferQueue<OrderBookEvent> outbound) {
         super();
@@ -115,6 +119,10 @@ class OrderLadder {
                 bestPriceIndex++;
             }
         }
+        // Update trade statistics
+        numTrades++;
+        volumeTraded += quantity;
+        notionalTraded += quantity * price;
         // Report the trade
         addToOutboundQueue(new Trade(this.senderId, incomingOrder, bookOrder, quantity, price));
     }
@@ -223,5 +231,43 @@ class OrderLadder {
      */
     double getBestPrice() {
         return getPriceAtPoint(this.bestPriceIndex);
+    }
+
+    public int getNumTrades() {
+        return this.numTrades;
+    }
+
+    public long getVolumeTraded() {
+        return this.volumeTraded;
+    }
+
+    public double getNotionalTraded() {
+        return this.notionalTraded;
+    }
+
+    public double getAvgTradePrice() {
+        return this.notionalTraded / this.volumeTraded;
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        if (this.isBuy) {
+            for (int i = 0; i < ladder.length; i++) {
+                if (ladder[i].size() > 0) {
+                    s.append(String.format("[n=%,8d] %,10d - %,8.2f -", ladder[i].size(), ladder[i].getTotalOrderVolume(),
+                            ladder[i].getPrice()));
+                    s.append(System.lineSeparator());
+                }
+            }
+        } else {
+            for (int i = ladder.length - 1; i >= 0; i--) {
+                if (ladder[i].size() > 0) {
+                    s.append(String.format("                        - %,8.2f - %,10d [n=%,8d]", ladder[i].getPrice(),
+                            ladder[i].getTotalOrderVolume(), ladder[i].size()));
+                    s.append(System.lineSeparator());
+                }
+            }
+        }
+        return s.toString();
     }
 }

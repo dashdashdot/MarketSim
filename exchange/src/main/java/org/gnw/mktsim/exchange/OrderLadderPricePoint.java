@@ -39,4 +39,12 @@ class OrderLadderPricePoint {
     public Order pop() {
         return orders.remove();
     }
+
+    public long getTotalOrderVolume() {
+        long total = 0L;
+        for (Order order : orders) {
+            total += order.getQuantity();
+        }
+        return total;
+    }
 }
