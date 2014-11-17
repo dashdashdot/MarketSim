@@ -10,7 +10,7 @@ public class TestOrderBookPerf {
     @Test
     public void test1K() {
         Instrument imnt = new Instrument("VOD.L", 100, 0.1);
-        OrderBook book = new OrderBook("CBOT", imnt);
+        OrderBook book = new OrderBook("CBOT", imnt, null);
         Random numGen = new Random();
         for (int i = 0; i < 1000; i++) {
             boolean side = numGen.nextBoolean();

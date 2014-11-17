@@ -71,15 +71,15 @@ public final class Messages {
      */
     int getSeconds();
 
-    // optional int32 milliseconds = 7 [default = 0];
+    // optional int32 nanoseconds = 7 [default = 0];
     /**
-     * <code>optional int32 milliseconds = 7 [default = 0];</code>
+     * <code>optional int32 nanoseconds = 7 [default = 0];</code>
      */
-    boolean hasMilliseconds();
+    boolean hasNanoseconds();
     /**
-     * <code>optional int32 milliseconds = 7 [default = 0];</code>
+     * <code>optional int32 nanoseconds = 7 [default = 0];</code>
      */
-    int getMilliseconds();
+    int getNanoseconds();
 
     // optional string timezone = 8;
     /**
@@ -179,7 +179,7 @@ public final class Messages {
             }
             case 56: {
               bitField0_ |= 0x00000040;
-              milliseconds_ = input.readInt32();
+              nanoseconds_ = input.readInt32();
               break;
             }
             case 66: {
@@ -323,20 +323,20 @@ public final class Messages {
       return seconds_;
     }
 
-    // optional int32 milliseconds = 7 [default = 0];
-    public static final int MILLISECONDS_FIELD_NUMBER = 7;
-    private int milliseconds_;
+    // optional int32 nanoseconds = 7 [default = 0];
+    public static final int NANOSECONDS_FIELD_NUMBER = 7;
+    private int nanoseconds_;
     /**
-     * <code>optional int32 milliseconds = 7 [default = 0];</code>
+     * <code>optional int32 nanoseconds = 7 [default = 0];</code>
      */
-    public boolean hasMilliseconds() {
+    public boolean hasNanoseconds() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional int32 milliseconds = 7 [default = 0];</code>
+     * <code>optional int32 nanoseconds = 7 [default = 0];</code>
      */
-    public int getMilliseconds() {
-      return milliseconds_;
+    public int getNanoseconds() {
+      return nanoseconds_;
     }
 
     // optional string timezone = 8;
@@ -389,7 +389,7 @@ public final class Messages {
       hours_ = 0;
       minutes_ = 0;
       seconds_ = 0;
-      milliseconds_ = 0;
+      nanoseconds_ = 0;
       timezone_ = "";
     }
     private byte memoizedIsInitialized = -1;
@@ -423,7 +423,7 @@ public final class Messages {
         output.writeInt32(6, seconds_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, milliseconds_);
+        output.writeInt32(7, nanoseconds_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBytes(8, getTimezoneBytes());
@@ -463,7 +463,7 @@ public final class Messages {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, milliseconds_);
+          .computeInt32Size(7, nanoseconds_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
@@ -597,7 +597,7 @@ public final class Messages {
         bitField0_ = (bitField0_ & ~0x00000010);
         seconds_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        milliseconds_ = 0;
+        nanoseconds_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
         timezone_ = "";
         bitField0_ = (bitField0_ & ~0x00000080);
@@ -656,7 +656,7 @@ public final class Messages {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.milliseconds_ = milliseconds_;
+        result.nanoseconds_ = nanoseconds_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
@@ -695,8 +695,8 @@ public final class Messages {
         if (other.hasSeconds()) {
           setSeconds(other.getSeconds());
         }
-        if (other.hasMilliseconds()) {
-          setMilliseconds(other.getMilliseconds());
+        if (other.hasNanoseconds()) {
+          setNanoseconds(other.getNanoseconds());
         }
         if (other.hasTimezone()) {
           bitField0_ |= 0x00000080;
@@ -928,35 +928,35 @@ public final class Messages {
         return this;
       }
 
-      // optional int32 milliseconds = 7 [default = 0];
-      private int milliseconds_ ;
+      // optional int32 nanoseconds = 7 [default = 0];
+      private int nanoseconds_ ;
       /**
-       * <code>optional int32 milliseconds = 7 [default = 0];</code>
+       * <code>optional int32 nanoseconds = 7 [default = 0];</code>
        */
-      public boolean hasMilliseconds() {
+      public boolean hasNanoseconds() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional int32 milliseconds = 7 [default = 0];</code>
+       * <code>optional int32 nanoseconds = 7 [default = 0];</code>
        */
-      public int getMilliseconds() {
-        return milliseconds_;
+      public int getNanoseconds() {
+        return nanoseconds_;
       }
       /**
-       * <code>optional int32 milliseconds = 7 [default = 0];</code>
+       * <code>optional int32 nanoseconds = 7 [default = 0];</code>
        */
-      public Builder setMilliseconds(int value) {
+      public Builder setNanoseconds(int value) {
         bitField0_ |= 0x00000040;
-        milliseconds_ = value;
+        nanoseconds_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 milliseconds = 7 [default = 0];</code>
+       * <code>optional int32 nanoseconds = 7 [default = 0];</code>
        */
-      public Builder clearMilliseconds() {
+      public Builder clearNanoseconds() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        milliseconds_ = 0;
+        nanoseconds_ = 0;
         onChanged();
         return this;
       }
@@ -7548,36 +7548,36 @@ public final class Messages {
   static {
     java.lang.String[] descriptorData = {
       "\n\035main/resources/messages.proto\022\033org.gnw" +
-      ".mktsim.exchange.msg\"\243\001\n\tTimestamp\022\017\n\004ye" +
+      ".mktsim.exchange.msg\"\242\001\n\tTimestamp\022\017\n\004ye" +
       "ar\030\001 \001(\005:\0010\022\020\n\005month\030\002 \001(\005:\0010\022\016\n\003day\030\003 \001" +
       "(\005:\0010\022\020\n\005hours\030\004 \001(\005:\0010\022\022\n\007minutes\030\005 \001(\005" +
-      ":\0010\022\022\n\007seconds\030\006 \001(\005:\0010\022\027\n\014milliseconds\030" +
-      "\007 \001(\005:\0010\022\020\n\010timezone\030\010 \001(\t\"q\n\006Sender\022\020\n\010" +
-      "senderId\030\001 \002(\t\022\024\n\014senderSeqNum\030\002 \002(\003\022?\n\017" +
-      "senderTimestamp\030\003 \002(\0132&.org.gnw.mktsim.e" +
-      "xchange.msg.Timestamp\"\226\001\n\010OrderMsg\0223\n\006se" +
-      "nder\030\001 \002(\0132#.org.gnw.mktsim.exchange.msg",
-      ".Sender\022\025\n\rclientOrderId\030\002 \002(\t\022\016\n\006symbol" +
-      "\030\003 \002(\t\022\r\n\005isBuy\030\004 \002(\010\022\020\n\010quantity\030\005 \002(\003\022" +
-      "\r\n\005price\030\006 \001(\001\"\\\n\016CancelOrderMsg\0223\n\006send" +
-      "er\030\001 \002(\0132#.org.gnw.mktsim.exchange.msg.S" +
-      "ender\022\025\n\rclientOrderId\030\002 \002(\t\"j\n\013OrderAck" +
-      "Msg\0223\n\006sender\030\001 \002(\0132#.org.gnw.mktsim.exc" +
-      "hange.msg.Sender\022\025\n\rclientOrderId\030\002 \002(\t\022" +
-      "\017\n\007message\030\003 \001(\t\"k\n\014OrderNAckMsg\0223\n\006send" +
-      "er\030\001 \002(\0132#.org.gnw.mktsim.exchange.msg.S" +
-      "ender\022\025\n\rclientOrderId\030\002 \002(\t\022\017\n\007message\030",
-      "\003 \001(\t\"\324\001\n\010TradeMsg\0223\n\006sender\030\001 \002(\0132#.org" +
-      ".gnw.mktsim.exchange.msg.Sender\022\016\n\006symbo" +
-      "l\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\003\022\r\n\005price\030\004 \002(\001" +
-      "\022\024\n\014clientId_buy\030\005 \001(\t\022\025\n\rclientId_sell\030" +
-      "\006 \001(\t\022\031\n\021clientOrderId_buy\030\007 \001(\t\022\032\n\022clie" +
-      "ntOrderId_sell\030\010 \001(\t\"\270\001\n\017MarketStatusMsg" +
-      "\0223\n\006sender\030\001 \002(\0132#.org.gnw.mktsim.exchan" +
-      "ge.msg.Sender\022C\n\006status\030\002 \002(\01623.org.gnw." +
-      "mktsim.exchange.msg.MarketStatusMsg.Stat" +
-      "us\"+\n\006Status\022\n\n\006CLOSED\020\000\022\010\n\004OPEN\020\001\022\013\n\007AU",
-      "CTION\020\002B\035\n\033org.gnw.mktsim.exchange.msg"
+      ":\0010\022\022\n\007seconds\030\006 \001(\005:\0010\022\026\n\013nanoseconds\030\007" +
+      " \001(\005:\0010\022\020\n\010timezone\030\010 \001(\t\"q\n\006Sender\022\020\n\010s" +
+      "enderId\030\001 \002(\t\022\024\n\014senderSeqNum\030\002 \002(\003\022?\n\017s" +
+      "enderTimestamp\030\003 \002(\0132&.org.gnw.mktsim.ex" +
+      "change.msg.Timestamp\"\226\001\n\010OrderMsg\0223\n\006sen" +
+      "der\030\001 \002(\0132#.org.gnw.mktsim.exchange.msg.",
+      "Sender\022\025\n\rclientOrderId\030\002 \002(\t\022\016\n\006symbol\030" +
+      "\003 \002(\t\022\r\n\005isBuy\030\004 \002(\010\022\020\n\010quantity\030\005 \002(\003\022\r" +
+      "\n\005price\030\006 \001(\001\"\\\n\016CancelOrderMsg\0223\n\006sende" +
+      "r\030\001 \002(\0132#.org.gnw.mktsim.exchange.msg.Se" +
+      "nder\022\025\n\rclientOrderId\030\002 \002(\t\"j\n\013OrderAckM" +
+      "sg\0223\n\006sender\030\001 \002(\0132#.org.gnw.mktsim.exch" +
+      "ange.msg.Sender\022\025\n\rclientOrderId\030\002 \002(\t\022\017" +
+      "\n\007message\030\003 \001(\t\"k\n\014OrderNAckMsg\0223\n\006sende" +
+      "r\030\001 \002(\0132#.org.gnw.mktsim.exchange.msg.Se" +
+      "nder\022\025\n\rclientOrderId\030\002 \002(\t\022\017\n\007message\030\003",
+      " \001(\t\"\324\001\n\010TradeMsg\0223\n\006sender\030\001 \002(\0132#.org." +
+      "gnw.mktsim.exchange.msg.Sender\022\016\n\006symbol" +
+      "\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\003\022\r\n\005price\030\004 \002(\001\022" +
+      "\024\n\014clientId_buy\030\005 \001(\t\022\025\n\rclientId_sell\030\006" +
+      " \001(\t\022\031\n\021clientOrderId_buy\030\007 \001(\t\022\032\n\022clien" +
+      "tOrderId_sell\030\010 \001(\t\"\270\001\n\017MarketStatusMsg\022" +
+      "3\n\006sender\030\001 \002(\0132#.org.gnw.mktsim.exchang" +
+      "e.msg.Sender\022C\n\006status\030\002 \002(\01623.org.gnw.m" +
+      "ktsim.exchange.msg.MarketStatusMsg.Statu" +
+      "s\"+\n\006Status\022\n\n\006CLOSED\020\000\022\010\n\004OPEN\020\001\022\013\n\007AUC",
+      "TION\020\002B\035\n\033org.gnw.mktsim.exchange.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7589,7 +7589,7 @@ public final class Messages {
           internal_static_org_gnw_mktsim_exchange_msg_Timestamp_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_gnw_mktsim_exchange_msg_Timestamp_descriptor,
-              new java.lang.String[] { "Year", "Month", "Day", "Hours", "Minutes", "Seconds", "Milliseconds", "Timezone", });
+              new java.lang.String[] { "Year", "Month", "Day", "Hours", "Minutes", "Seconds", "Nanoseconds", "Timezone", });
           internal_static_org_gnw_mktsim_exchange_msg_Sender_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_org_gnw_mktsim_exchange_msg_Sender_fieldAccessorTable = new

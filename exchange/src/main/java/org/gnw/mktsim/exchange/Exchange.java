@@ -22,7 +22,7 @@ public class Exchange {
     }
 
     public Exchange(final String name, final String firstMarket) {
-        this(name, new Market(firstMarket));
+        this(name, new Market(firstMarket, null));
     }
 
     public Exchange(final String name, Market firstMarket) {

@@ -1,5 +1,9 @@
 package org.gnw.mktsim.exchange;
 
+import org.gnw.mktsim.exchange.msg.Messages.TradeMsg;
+
+import com.google.protobuf.GeneratedMessage;
+
 public class Trade extends OrderBookEvent {
 
     private long   quantity;
@@ -48,5 +52,17 @@ public class Trade extends OrderBookEvent {
 
     public String getClientOrderId_sell() {
         return clientOrderId_sell;
+    }
+
+    public GeneratedMessage toProtoBuf() {
+        TradeMsg pb = TradeMsg.newBuilder().setSender(this.getSender().toProtoBuf())
+                .setSymbol(this.getInstrument().getSymbol()).setClientIdBuy(this.clientId_buy)
+                .setClientIdSell(this.clientId_sell).setClientOrderIdBuy(this.clientOrderId_buy)
+                .setClientOrderIdSell(this.clientOrderId_sell).setQuantity(this.quantity).setPrice(this.price).build();
+        return pb;
+    }
+
+    protected String getMsgTypeUnsafe() {
+        return "8";
     }
 }

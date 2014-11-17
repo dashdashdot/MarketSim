@@ -1,5 +1,9 @@
 package org.gnw.mktsim.exchange;
 
+import org.gnw.mktsim.exchange.msg.Messages.OrderMsg;
+
+import com.google.protobuf.GeneratedMessage;
+
 public class Order extends OrderBookEvent implements Cloneable {
 
     private final String  partyOrderId;
@@ -84,4 +88,14 @@ public class Order extends OrderBookEvent implements Cloneable {
         return output.toString();
     }
 
+    public GeneratedMessage toProtoBuf() {
+        OrderMsg pb = OrderMsg.newBuilder().setSender(this.getSender().toProtoBuf())
+                .setClientOrderId(this.partyOrderId).setSymbol(this.getInstrument().getSymbol()).setIsBuy(this.isBuy)
+                .setQuantity(this.quantity).setPrice(this.price).build();
+        return pb;
+    }
+
+    protected String getMsgTypeUnsafe() {
+        return "D ";
+    }
 }

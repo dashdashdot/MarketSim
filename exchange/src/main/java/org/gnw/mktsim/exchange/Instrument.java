@@ -3,6 +3,7 @@ package org.gnw.mktsim.exchange;
 public class Instrument {
 
     private final String symbol;
+    private final String name;
     private double       lastPrice;
     private double       tickSize;
 
@@ -10,11 +11,16 @@ public class Instrument {
         this(symbol, 100.0, 1.0);
     }
 
-    public Instrument(String symbol, double lastPrice, double tickSize) {
+    public Instrument(String symbol, String name, double lastPrice, double tickSize) {
         super();
         this.symbol = symbol;
+        this.name = name;
         this.lastPrice = lastPrice;
         this.tickSize = tickSize;
+    }
+
+    public Instrument(String symbol, double lastPrice, double tickSize) {
+        this(symbol, "", lastPrice, tickSize);
     }
 
     public void setLastPrice(final double price) {
@@ -35,6 +41,10 @@ public class Instrument {
 
     public String getSymbol() {
         return this.symbol;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public String toString() {

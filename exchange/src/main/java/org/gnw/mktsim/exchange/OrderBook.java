@@ -1,27 +1,26 @@
 package org.gnw.mktsim.exchange;
 
-import java.util.concurrent.LinkedTransferQueue;
-
+import org.gnw.mktsim.exchange.pub.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class OrderBook {
 
-    private final String                              senderId;
-    private final Instrument                          imnt;
-    private OrderLadder                               buys;
-    private OrderLadder                               sells;
-    private final LinkedTransferQueue<OrderBookEvent> outbound;
+    private final String     senderId;
+    private final Instrument imnt;
+    private OrderLadder      buys;
+    private OrderLadder      sells;
+    private Publisher        publisher;
 
-    private final Logger                              log = LoggerFactory.getLogger(this.getClass());
+    private final Logger     log = LoggerFactory.getLogger(this.getClass());
 
-    public OrderBook(final String senderId, final Instrument imnt) {
+    public OrderBook(final String senderId, final Instrument imnt, Publisher publisher) {
         super();
         this.senderId = senderId;
-        this.outbound = new LinkedTransferQueue<OrderBookEvent>();
         this.imnt = imnt;
-        this.buys = new OrderLadder(senderId, imnt, true, outbound);
-        this.sells = new OrderLadder(senderId, imnt, false, outbound);
+        this.publisher = publisher;
+        this.buys = new OrderLadder(senderId, imnt, true, publisher);
+        this.sells = new OrderLadder(senderId, imnt, false, publisher);
     }
 
     public void addOrder(Order order) {
@@ -30,7 +29,7 @@ public class OrderBook {
         }
         if (isValidOrder(order)) {
             sendAck(order);
-            addToOutboundQueue(order.clone());
+            publish(order.clone());
             OrderLadder hitLadder = (order.isBuy() ? sells : buys);
             OrderLadder residualLadder = (order.isBuy() ? buys : sells);
             if (hitLadder.addOrder(order)) {
@@ -58,10 +57,9 @@ public class OrderBook {
         return buys.size() + sells.size();
     }
 
-    private void addToOutboundQueue(OrderBookEvent event) {
-        outbound.put(event);
-        if (log.isTraceEnabled()) {
-            log.trace("Adding to queue: {}", event);
+    private void publish(OrderBookEvent event) {
+        if (publisher != null) {
+            publisher.add(event);
         }
     }
 
@@ -91,13 +89,17 @@ public class OrderBook {
 
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append(String.format("Instrument: %s Last=%,.2f VWAP=%,.4f n=%,d v=%,d", imnt.getSymbol(),
-                imnt.getLastPrice(), getAvgTradePrice(), getNumTrades(), getVolumeTraded()));
+        s.append(this.toStringTopLine());
         s.append(System.lineSeparator());
         s.append("------------------------------------------------------------");
         s.append(System.lineSeparator());
         s.append(sells.toString());
         s.append(buys.toString());
         return s.toString();
+    }
+
+    public String toStringTopLine() {
+        return String.format("Instrument: %s Last=%,.2f VWAP=%,.4f n=%,d v=%,d", imnt.getSymbol(), imnt.getLastPrice(),
+                getAvgTradePrice(), getNumTrades(), getVolumeTraded());
     }
 }

@@ -1,7 +1,6 @@
 package org.gnw.mktsim.exchange;
 
-import java.util.concurrent.LinkedTransferQueue;
-
+import org.gnw.mktsim.exchange.pub.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,28 +15,28 @@ import org.slf4j.LoggerFactory;
  */
 class OrderLadder {
 
-    private final int                                 arrayScaler    = 100;
-    private final String                              senderId;
-    private final Instrument                          imnt;
-    private final boolean                             isBuy;
-    private final LinkedTransferQueue<OrderBookEvent> outbound;
-    private OrderLadderPricePoint[]                   ladder;
-    private int                                       bestPriceIndex;
-    private double                                    ladderBottom;
-    private double                                    ladderTick;
-    private int                                       numOrders      = 0;
-    private int                                       numTrades      = 0;
-    private long                                      volumeTraded   = 0L;
-    private double                                    notionalTraded = 0.0;
+    private final int               arrayScaler    = 100;
+    private final String            senderId;
+    private final Instrument        imnt;
+    private final boolean           isBuy;
+    private final Publisher         publisher;
+    private OrderLadderPricePoint[] ladder;
+    private int                     bestPriceIndex;
+    private double                  ladderBottom;
+    private double                  ladderTick;
+    private int                     numOrders      = 0;
+    private int                     numTrades      = 0;
+    private long                    volumeTraded   = 0L;
+    private double                  notionalTraded = 0.0;
 
-    private final Logger                              log            = LoggerFactory.getLogger(this.getClass());
+    private final Logger            log            = LoggerFactory.getLogger(this.getClass());
 
-    OrderLadder(String senderId, Instrument imnt, boolean isBuy, LinkedTransferQueue<OrderBookEvent> outbound) {
+    OrderLadder(String senderId, Instrument imnt, boolean isBuy, Publisher publisher) {
         super();
         this.senderId = senderId;
         this.imnt = imnt;
         this.isBuy = isBuy;
-        this.outbound = outbound;
+        this.publisher = publisher;
         build(arrayScaler);
         this.bestPriceIndex = Integer.MAX_VALUE;
     }
@@ -123,14 +122,15 @@ class OrderLadder {
         numTrades++;
         volumeTraded += quantity;
         notionalTraded += quantity * price;
-        // Report the trade
-        addToOutboundQueue(new Trade(this.senderId, incomingOrder, bookOrder, quantity, price));
+        // Report the trade and that the two orders have changed
+        publish(new Trade(this.senderId, incomingOrder, bookOrder, quantity, price));
+        publish(incomingOrder);
+        publish(bookOrder);
     }
 
-    private void addToOutboundQueue(OrderBookEvent event) {
-        outbound.put(event);
-        if (log.isTraceEnabled()) {
-            log.trace("Adding to queue: {}", event);
+    private void publish(OrderBookEvent event) {
+        if (publisher != null) {
+            publisher.add(event);
         }
     }
 
@@ -254,8 +254,8 @@ class OrderLadder {
         if (this.isBuy) {
             for (int i = 0; i < ladder.length; i++) {
                 if (ladder[i].size() > 0) {
-                    s.append(String.format("[n=%,8d] %,10d - %,8.2f -", ladder[i].size(), ladder[i].getTotalOrderVolume(),
-                            ladder[i].getPrice()));
+                    s.append(String.format("[n=%,8d] %,10d - %,8.2f -", ladder[i].size(),
+                            ladder[i].getTotalOrderVolume(), ladder[i].getPrice()));
                     s.append(System.lineSeparator());
                 }
             }
