@@ -8,6 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zeromq.ZMQ;
 
+/**
+ * The publisher works by segregating the generation of events in the market
+ * from their publication by using a publication queue.
+ * 
+ * @author Gerard Whitehead
+ *
+ */
 public class Publisher implements Runnable {
 
     private BlockingQueue<OrderBookEvent> inQueue;
