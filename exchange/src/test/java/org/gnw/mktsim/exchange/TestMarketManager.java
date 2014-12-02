@@ -1,5 +1,7 @@
 package org.gnw.mktsim.exchange;
 
+import org.gnw.mktsim.common.Instrument;
+import org.gnw.mktsim.common.Order;
 import org.junit.Test;
 
 public class TestMarketManager {

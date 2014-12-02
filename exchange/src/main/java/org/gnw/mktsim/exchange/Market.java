@@ -3,6 +3,9 @@ package org.gnw.mktsim.exchange;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.gnw.mktsim.common.Instrument;
+import org.gnw.mktsim.common.Order;
+import org.gnw.mktsim.common.OrderBookEvent;
 import org.gnw.mktsim.exchange.pub.Publisher;
 
 public class Market {
@@ -30,7 +33,7 @@ public class Market {
     }
 
     public void addOrder(Order order) {
-        String symbol = order.getInstrument().getSymbol();
+        String symbol = order.getSymbol();
         if (books.containsKey(symbol)) {
             books.get(symbol).addOrder(order);
         } else {

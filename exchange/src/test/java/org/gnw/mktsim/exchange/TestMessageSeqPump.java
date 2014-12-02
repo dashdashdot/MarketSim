@@ -2,7 +2,7 @@ package org.gnw.mktsim.exchange;
 
 import static org.junit.Assert.*;
 
-import org.gnw.mktsim.exchange.msg.MsgSeqPump;
+import org.gnw.mktsim.common.msg.MsgSeqPump;
 import org.junit.Test;
 
 public class TestMessageSeqPump {

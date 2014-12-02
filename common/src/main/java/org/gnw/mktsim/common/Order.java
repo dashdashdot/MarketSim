@@ -1,6 +1,6 @@
-package org.gnw.mktsim.exchange;
+package org.gnw.mktsim.common;
 
-import org.gnw.mktsim.exchange.msg.Messages.OrderMsg;
+import org.gnw.mktsim.common.msg.Messages.OrderMsg;
 
 import com.google.protobuf.GeneratedMessage;
 
@@ -13,8 +13,8 @@ public class Order extends OrderBookEvent implements Cloneable {
     private long          tradedQuantity;
     private double        tradedValue;
 
-    public Order(String partyId, String partyOrderId, Instrument imnt, boolean isBuy, long quantity, double price) {
-        super(partyId, imnt);
+    public Order(String partyId, String partyOrderId, String symbol, boolean isBuy, long quantity, double price) {
+        super(partyId, symbol);
         this.partyOrderId = partyOrderId;
         this.isBuy = isBuy;
         this.quantity = quantity;
@@ -23,9 +23,12 @@ public class Order extends OrderBookEvent implements Cloneable {
         this.tradedValue = 0.0;
     }
 
+    public Order(String partyId, String partyOrderId, Instrument imnt, boolean isBuy, long quantity, double price) {
+        this(partyId, partyOrderId, imnt.getSymbol(), isBuy, quantity, price);
+    }
+
     public Order(Order order) {
-        this(order.getSender().getId(), order.partyOrderId, order.getInstrument(), order.isBuy, order.quantity,
-                order.price);
+        this(order.getSender().getId(), order.partyOrderId, order.getSymbol(), order.isBuy, order.quantity, order.price);
     }
 
     @Override
@@ -45,7 +48,7 @@ public class Order extends OrderBookEvent implements Cloneable {
         return isBuy;
     }
 
-    void trade(long quantity, double price) {
+    public void trade(long quantity, double price) {
         this.quantity -= quantity;
         this.tradedQuantity += quantity;
         this.tradedValue += (quantity * price);
@@ -73,7 +76,7 @@ public class Order extends OrderBookEvent implements Cloneable {
         output.append("[ID=");
         output.append(this.partyOrderId);
         output.append((this.isBuy ? "] B " : "] S "));
-        output.append(this.getInstrument().getSymbol());
+        output.append(this.getSymbol());
         output.append(" ");
         output.append(Long.toString(this.quantity));
         output.append("@");
@@ -90,7 +93,7 @@ public class Order extends OrderBookEvent implements Cloneable {
 
     public GeneratedMessage toProtoBuf() {
         OrderMsg pb = OrderMsg.newBuilder().setSender(this.getSender().toProtoBuf())
-                .setClientOrderId(this.partyOrderId).setSymbol(this.getInstrument().getSymbol()).setIsBuy(this.isBuy)
+                .setClientOrderId(this.partyOrderId).setSymbol(this.getSymbol()).setIsBuy(this.isBuy)
                 .setQuantity(this.quantity).setPrice(this.price).build();
         return pb;
     }

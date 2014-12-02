@@ -1,8 +1,8 @@
 syntax = "proto2";
 
-package org.gnw.mktsim.exchange.msg;
+package org.gnw.mktsim.common.msg;
 
-option java_package = "org.gnw.mktsim.exchange.msg";
+option java_package = "org.gnw.mktsim.common.msg";
 message Timestamp {
 	optional int32 year = 1 [default = 0];
 	optional int32 month = 2 [default = 0];

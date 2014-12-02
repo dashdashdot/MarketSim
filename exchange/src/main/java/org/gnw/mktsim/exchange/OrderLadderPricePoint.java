@@ -3,6 +3,8 @@ package org.gnw.mktsim.exchange;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+import org.gnw.mktsim.common.Order;
+
 /**
  * This is the FIFO queue representing all the orders at a specific price point.
  * 

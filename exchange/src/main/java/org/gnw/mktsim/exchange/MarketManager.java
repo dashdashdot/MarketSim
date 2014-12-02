@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.gnw.mktsim.common.Instrument;
+import org.gnw.mktsim.common.Order;
 import org.gnw.mktsim.exchange.pub.OrderReceiver;
 import org.gnw.mktsim.exchange.pub.Publisher;
 import org.slf4j.Logger;

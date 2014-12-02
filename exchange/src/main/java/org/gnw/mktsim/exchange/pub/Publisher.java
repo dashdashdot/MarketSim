@@ -3,7 +3,7 @@ package org.gnw.mktsim.exchange.pub;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import org.gnw.mktsim.exchange.OrderBookEvent;
+import org.gnw.mktsim.common.OrderBookEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zeromq.ZMQ;
@@ -83,7 +83,7 @@ public class Publisher implements Runnable {
     private void publish(OrderBookEvent e) {
         // Msg format is a byte array containing:
         // symbol [space] msgType protobuf
-        byte[] b_sym = e.getInstrument().getSymbol().getBytes();
+        byte[] b_sym = e.getSymbol().getBytes();
         byte[] b_msgType = e.getMsgType().getBytes();
         byte[] b_pb = e.toProtoBuf().toByteArray();
         // Now put it into a single array

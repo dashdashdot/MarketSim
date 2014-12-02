@@ -1,4 +1,4 @@
-package org.gnw.mktsim.exchange.msg;
+package org.gnw.mktsim.common.msg;
 
 public class MsgSeqPump {
 

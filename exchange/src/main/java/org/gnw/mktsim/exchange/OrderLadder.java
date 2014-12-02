@@ -1,5 +1,9 @@
 package org.gnw.mktsim.exchange;
 
+import org.gnw.mktsim.common.Instrument;
+import org.gnw.mktsim.common.Order;
+import org.gnw.mktsim.common.OrderBookEvent;
+import org.gnw.mktsim.common.Trade;
 import org.gnw.mktsim.exchange.pub.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

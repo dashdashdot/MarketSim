@@ -2,6 +2,8 @@ package org.gnw.mktsim.exchange;
 
 import static org.junit.Assert.*;
 
+import org.gnw.mktsim.common.Instrument;
+import org.gnw.mktsim.common.Order;
 import org.junit.Test;
 
 public class TestOrderBook {

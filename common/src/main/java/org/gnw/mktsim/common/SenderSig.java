@@ -1,10 +1,10 @@
-package org.gnw.mktsim.exchange;
+package org.gnw.mktsim.common;
 
 import java.time.LocalDateTime;
 
-import org.gnw.mktsim.exchange.msg.Messages.Sender;
-import org.gnw.mktsim.exchange.msg.Messages.Timestamp;
-import org.gnw.mktsim.exchange.msg.MsgSeqPump;
+import org.gnw.mktsim.common.msg.MsgSeqPump;
+import org.gnw.mktsim.common.msg.Messages.Sender;
+import org.gnw.mktsim.common.msg.Messages.Timestamp;
 
 /**
  * A message sender's signature.

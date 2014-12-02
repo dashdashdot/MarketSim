@@ -1,29 +1,33 @@
-package org.gnw.mktsim.exchange;
+package org.gnw.mktsim.common;
 
 import com.google.protobuf.GeneratedMessage;
 
 public abstract class OrderBookEvent {
 
-    private final SenderSig  sender;
-    private final Instrument imnt;
-    private String           msgType = null;
+    private final SenderSig sender;
+    private final String    symbol;
+    private String          msgType = null;
 
     public OrderBookEvent(String senderId) {
-        this(senderId, null);
+        this(senderId, (String) null);
     }
 
     public OrderBookEvent(String senderId, Instrument imnt) {
+        this(senderId, imnt.getSymbol());
+    }
+
+    public OrderBookEvent(String senderId, String symbol) {
         super();
         this.sender = new SenderSig(senderId);
-        this.imnt = imnt;
+        this.symbol = symbol;
     }
 
     public SenderSig getSender() {
         return sender;
     }
 
-    public Instrument getInstrument() {
-        return imnt;
+    public String getSymbol() {
+        return this.symbol;
     }
 
     /**

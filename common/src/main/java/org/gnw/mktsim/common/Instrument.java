@@ -1,4 +1,4 @@
-package org.gnw.mktsim.exchange;
+package org.gnw.mktsim.common;
 
 public class Instrument {
 

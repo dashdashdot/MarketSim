@@ -2,6 +2,8 @@ package org.gnw.mktsim.exchange;
 
 import java.util.Random;
 
+import org.gnw.mktsim.common.Instrument;
+import org.gnw.mktsim.common.Order;
 import org.junit.Assert;
 import org.junit.Test;
 
