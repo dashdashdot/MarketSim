@@ -21,12 +21,12 @@ public class MarketManager {
 
     private final Logger        log = LoggerFactory.getLogger(this.getClass());
 
-    public MarketManager(String marketName) {
+    public MarketManager(String marketName, int inPort, int outPort) {
         super();
-        this.publisher = new Publisher();
-        this.receiver = null;
+        this.publisher = new Publisher(outPort);
         this.marketName = marketName;
         this.market = new Market(marketName, publisher);
+        this.receiver = new OrderReceiver(inPort, this.market);
     }
 
     public void loadDictionary(String filename) throws FileNotFoundException, IOException {
@@ -73,11 +73,15 @@ public class MarketManager {
         // Must start the responder before the receiver to avoid any lost
         // messages.
         publisher.start();
-        // receiver.start();
+        // Now the order books within the market.
+        market.start();
+        // And finally the order receiver.
+        receiver.start();
     }
 
     public void stop() {
-        // receiver.stop();
+        receiver.stop();
+        market.stop();
         publisher.stop();
     }
 

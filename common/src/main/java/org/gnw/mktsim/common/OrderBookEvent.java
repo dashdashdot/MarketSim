@@ -8,8 +8,12 @@ public abstract class OrderBookEvent {
     private final String    symbol;
     private String          msgType = null;
 
+    public OrderBookEvent() {
+        this("Unknown", "Unknown");
+    }
+
     public OrderBookEvent(String senderId) {
-        this(senderId, (String) null);
+        this(senderId, "Unknown");
     }
 
     public OrderBookEvent(String senderId, Instrument imnt) {

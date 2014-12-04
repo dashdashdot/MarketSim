@@ -7,12 +7,15 @@ import org.gnw.mktsim.common.Instrument;
 import org.gnw.mktsim.common.Order;
 import org.gnw.mktsim.common.OrderBookEvent;
 import org.gnw.mktsim.exchange.pub.Publisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Market {
 
     private final String                 name;
     private final Map<String, OrderBook> books;
     private final Publisher              publisher;
+    private final Logger                 log = LoggerFactory.getLogger(this.getClass());
 
     public enum Status {
         CLOSED, OPEN, AUCTION
@@ -32,12 +35,32 @@ public class Market {
         books.put(imnt.getSymbol(), book);
     }
 
+    public void addEvent(OrderBookEvent event) {
+        if (event instanceof Order) {
+            addOrder((Order) event);
+        } else {
+            log.error("Unrecognised inbound order book event so ignoring it.  Received: {}", event);
+        }
+    }
+
     public void addOrder(Order order) {
         String symbol = order.getSymbol();
         if (books.containsKey(symbol)) {
             books.get(symbol).addOrder(order);
         } else {
 
+        }
+    }
+
+    public void start() {
+        for (OrderBook book : books.values()) {
+            book.start();
+        }
+    }
+
+    public void stop() {
+        for (OrderBook book : books.values()) {
+            book.stop();
         }
     }
 

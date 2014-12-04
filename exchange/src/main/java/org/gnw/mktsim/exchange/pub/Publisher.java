@@ -4,6 +4,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 import org.gnw.mktsim.common.OrderBookEvent;
+import org.gnw.mktsim.common.msg.ExchangeMsgBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zeromq.ZMQ;
@@ -19,14 +20,16 @@ public class Publisher implements Runnable {
 
     private BlockingQueue<OrderBookEvent> inQueue;
     private final Thread                  runner;
+    private final int                     port;
     private boolean                       isInitialised = false;
     private boolean                       isAlive       = false;
     private final Logger                  log           = LoggerFactory.getLogger(this.getClass());
     private ZMQ.Context                   context;
     private ZMQ.Socket                    publisher;
 
-    public Publisher() {
+    public Publisher(int port) {
         super();
+        this.port = port;
         this.inQueue = new ArrayBlockingQueue<OrderBookEvent>(1000);
         this.runner = new Thread(this, "Publisher");
     }
@@ -45,7 +48,7 @@ public class Publisher implements Runnable {
             }
             this.context = ZMQ.context(1);
             this.publisher = context.socket(ZMQ.PUB);
-            publisher.bind("tcp://*:5556");
+            publisher.bind("tcp://*:" + port);
             publisher.bind("ipc://market");
             this.isInitialised = true;
         }
@@ -70,6 +73,7 @@ public class Publisher implements Runnable {
         if (log.isInfoEnabled()) {
             log.info("Publisher thread starting");
         }
+        publishBlip();
         while (this.isAlive) {
             try {
                 OrderBookEvent e = inQueue.take();
@@ -87,18 +91,13 @@ public class Publisher implements Runnable {
         this.context.term();
     }
 
+    private void publishBlip() {
+        byte[] b_msg = "HI".getBytes();
+        publisher.send(b_msg);
+    }
+    
     private void publish(OrderBookEvent e) {
-        // Msg format is a byte array containing:
-        // symbol [space] msgType protobuf
-        byte[] b_sym = e.getSymbol().getBytes();
-        byte[] b_msgType = e.getMsgType().getBytes();
-        byte[] b_pb = e.toProtoBuf().toByteArray();
-        // Now put it into a single array
-        byte[] b_msg = new byte[b_sym.length + b_pb.length + 3];
-        System.arraycopy(b_sym, 0, b_msg, 0, b_sym.length);
-        b_msg[b_sym.length] = 32;
-        System.arraycopy(b_msgType, 0, b_msg, b_sym.length + 1, 2);
-        System.arraycopy(b_pb, 0, b_msg, b_sym.length + 3, b_pb.length);
+        byte[] b_msg = ExchangeMsgBuilder.build(e);
         if (log.isDebugEnabled()) {
             log.debug("Sending: {}", new String(b_msg));
         }
