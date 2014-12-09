@@ -21,33 +21,15 @@ public class ExchangeMsgParser {
     }
 
     private static OrderBookEvent parsePb(String msgType, byte[] msg) {
-        switch (msgType) {
-        case "D ":
-            return parseOrderPb(msg);
-        case "8 ":
-            return parseTradePb(msg);
-        default:
-            throw new IllegalArgumentException("Could not understand message type " + msgType);
-        }
-    }
-
-    private static Order parseOrderPb(byte[] b_msg) {
         try {
-            OrderMsg msg = OrderMsg.parseFrom(b_msg);
-            Order order = new Order(msg.getSender().getSenderId(), msg.getClientOrderId(), msg.getSymbol(),
-                    msg.getIsBuy(), msg.getQuantity(), msg.getPrice());
-            return order;
-        } catch (InvalidProtocolBufferException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    private static Trade parseTradePb(byte[] b_msg) {
-        try {
-            TradeMsg msg = TradeMsg.parseFrom(b_msg);
-            Trade trade = new Trade(msg.getSender().getSenderId(), msg.getSymbol(), msg.getQuantity(), msg.getPrice(),
-                    msg.getClientIdBuy(), msg.getClientIdSell(), msg.getClientOrderIdBuy(), msg.getClientOrderIdSell());
-            return trade;
+            switch (msgType) {
+            case "D ":
+                return new Order(OrderMsg.parseFrom(msg));
+            case "8 ":
+                return new Trade(TradeMsg.parseFrom(msg));
+            default:
+                throw new IllegalArgumentException("Could not understand message type " + msgType);
+            }
         } catch (InvalidProtocolBufferException e) {
             throw new IllegalArgumentException(e);
         }

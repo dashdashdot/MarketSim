@@ -31,6 +31,11 @@ public class Order extends OrderBookEvent implements Cloneable {
         this(order.getSender().getId(), order.partyOrderId, order.getSymbol(), order.isBuy, order.quantity, order.price);
     }
 
+    public Order(OrderMsg pb) {
+        this(pb.getSender().getSenderId(), pb.getClientOrderId(), pb.getSymbol(), pb.getIsBuy(), pb.getQuantity(),
+                pb.getPrice());
+    }
+
     @Override
     public Order clone() {
         return new Order(this);

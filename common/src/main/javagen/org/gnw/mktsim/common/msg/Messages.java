@@ -7498,6 +7498,1963 @@ public final class Messages {
     // @@protoc_insertion_point(class_scope:org.gnw.mktsim.common.msg.MarketStatusMsg)
   }
 
+  public interface MD_TopOfBookReqMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .org.gnw.mktsim.common.msg.Sender sender = 1;
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    boolean hasSender();
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    org.gnw.mktsim.common.msg.Messages.Sender getSender();
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    org.gnw.mktsim.common.msg.Messages.SenderOrBuilder getSenderOrBuilder();
+
+    // required string symbol = 2;
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    boolean hasSymbol();
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    java.lang.String getSymbol();
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSymbolBytes();
+  }
+  /**
+   * Protobuf type {@code org.gnw.mktsim.common.msg.MD_TopOfBookReqMsg}
+   */
+  public static final class MD_TopOfBookReqMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements MD_TopOfBookReqMsgOrBuilder {
+    // Use MD_TopOfBookReqMsg.newBuilder() to construct.
+    private MD_TopOfBookReqMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MD_TopOfBookReqMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MD_TopOfBookReqMsg defaultInstance;
+    public static MD_TopOfBookReqMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MD_TopOfBookReqMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MD_TopOfBookReqMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              org.gnw.mktsim.common.msg.Messages.Sender.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = sender_.toBuilder();
+              }
+              sender_ = input.readMessage(org.gnw.mktsim.common.msg.Messages.Sender.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(sender_);
+                sender_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              symbol_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg.class, org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MD_TopOfBookReqMsg> PARSER =
+        new com.google.protobuf.AbstractParser<MD_TopOfBookReqMsg>() {
+      public MD_TopOfBookReqMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MD_TopOfBookReqMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MD_TopOfBookReqMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .org.gnw.mktsim.common.msg.Sender sender = 1;
+    public static final int SENDER_FIELD_NUMBER = 1;
+    private org.gnw.mktsim.common.msg.Messages.Sender sender_;
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    public boolean hasSender() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    public org.gnw.mktsim.common.msg.Messages.Sender getSender() {
+      return sender_;
+    }
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    public org.gnw.mktsim.common.msg.Messages.SenderOrBuilder getSenderOrBuilder() {
+      return sender_;
+    }
+
+    // required string symbol = 2;
+    public static final int SYMBOL_FIELD_NUMBER = 2;
+    private java.lang.Object symbol_;
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    public boolean hasSymbol() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    public java.lang.String getSymbol() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          symbol_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSymbolBytes() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        symbol_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      sender_ = org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance();
+      symbol_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasSender()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSymbol()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getSender().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, sender_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getSymbolBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, sender_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getSymbolBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.gnw.mktsim.common.msg.MD_TopOfBookReqMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg.class, org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg.Builder.class);
+      }
+
+      // Construct using org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSenderFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (senderBuilder_ == null) {
+          sender_ = org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance();
+        } else {
+          senderBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        symbol_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_descriptor;
+      }
+
+      public org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg getDefaultInstanceForType() {
+        return org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg.getDefaultInstance();
+      }
+
+      public org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg build() {
+        org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg buildPartial() {
+        org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg result = new org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (senderBuilder_ == null) {
+          result.sender_ = sender_;
+        } else {
+          result.sender_ = senderBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.symbol_ = symbol_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg) {
+          return mergeFrom((org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg other) {
+        if (other == org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg.getDefaultInstance()) return this;
+        if (other.hasSender()) {
+          mergeSender(other.getSender());
+        }
+        if (other.hasSymbol()) {
+          bitField0_ |= 0x00000002;
+          symbol_ = other.symbol_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSender()) {
+          
+          return false;
+        }
+        if (!hasSymbol()) {
+          
+          return false;
+        }
+        if (!getSender().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.gnw.mktsim.common.msg.Messages.MD_TopOfBookReqMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .org.gnw.mktsim.common.msg.Sender sender = 1;
+      private org.gnw.mktsim.common.msg.Messages.Sender sender_ = org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.gnw.mktsim.common.msg.Messages.Sender, org.gnw.mktsim.common.msg.Messages.Sender.Builder, org.gnw.mktsim.common.msg.Messages.SenderOrBuilder> senderBuilder_;
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public boolean hasSender() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public org.gnw.mktsim.common.msg.Messages.Sender getSender() {
+        if (senderBuilder_ == null) {
+          return sender_;
+        } else {
+          return senderBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public Builder setSender(org.gnw.mktsim.common.msg.Messages.Sender value) {
+        if (senderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          sender_ = value;
+          onChanged();
+        } else {
+          senderBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public Builder setSender(
+          org.gnw.mktsim.common.msg.Messages.Sender.Builder builderForValue) {
+        if (senderBuilder_ == null) {
+          sender_ = builderForValue.build();
+          onChanged();
+        } else {
+          senderBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public Builder mergeSender(org.gnw.mktsim.common.msg.Messages.Sender value) {
+        if (senderBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              sender_ != org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance()) {
+            sender_ =
+              org.gnw.mktsim.common.msg.Messages.Sender.newBuilder(sender_).mergeFrom(value).buildPartial();
+          } else {
+            sender_ = value;
+          }
+          onChanged();
+        } else {
+          senderBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public Builder clearSender() {
+        if (senderBuilder_ == null) {
+          sender_ = org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance();
+          onChanged();
+        } else {
+          senderBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public org.gnw.mktsim.common.msg.Messages.Sender.Builder getSenderBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getSenderFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public org.gnw.mktsim.common.msg.Messages.SenderOrBuilder getSenderOrBuilder() {
+        if (senderBuilder_ != null) {
+          return senderBuilder_.getMessageOrBuilder();
+        } else {
+          return sender_;
+        }
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.gnw.mktsim.common.msg.Messages.Sender, org.gnw.mktsim.common.msg.Messages.Sender.Builder, org.gnw.mktsim.common.msg.Messages.SenderOrBuilder> 
+          getSenderFieldBuilder() {
+        if (senderBuilder_ == null) {
+          senderBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.gnw.mktsim.common.msg.Messages.Sender, org.gnw.mktsim.common.msg.Messages.Sender.Builder, org.gnw.mktsim.common.msg.Messages.SenderOrBuilder>(
+                  sender_,
+                  getParentForChildren(),
+                  isClean());
+          sender_ = null;
+        }
+        return senderBuilder_;
+      }
+
+      // required string symbol = 2;
+      private java.lang.Object symbol_ = "";
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public boolean hasSymbol() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public java.lang.String getSymbol() {
+        java.lang.Object ref = symbol_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          symbol_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSymbolBytes() {
+        java.lang.Object ref = symbol_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          symbol_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public Builder setSymbol(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public Builder clearSymbol() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        symbol_ = getDefaultInstance().getSymbol();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public Builder setSymbolBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:org.gnw.mktsim.common.msg.MD_TopOfBookReqMsg)
+    }
+
+    static {
+      defaultInstance = new MD_TopOfBookReqMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:org.gnw.mktsim.common.msg.MD_TopOfBookReqMsg)
+  }
+
+  public interface MD_TopOfBookRespMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .org.gnw.mktsim.common.msg.Sender sender = 1;
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    boolean hasSender();
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    org.gnw.mktsim.common.msg.Messages.Sender getSender();
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    org.gnw.mktsim.common.msg.Messages.SenderOrBuilder getSenderOrBuilder();
+
+    // required string symbol = 2;
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    boolean hasSymbol();
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    java.lang.String getSymbol();
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSymbolBytes();
+
+    // required double lastPrice = 3;
+    /**
+     * <code>required double lastPrice = 3;</code>
+     */
+    boolean hasLastPrice();
+    /**
+     * <code>required double lastPrice = 3;</code>
+     */
+    double getLastPrice();
+
+    // required int64 volume = 4;
+    /**
+     * <code>required int64 volume = 4;</code>
+     */
+    boolean hasVolume();
+    /**
+     * <code>required int64 volume = 4;</code>
+     */
+    long getVolume();
+
+    // optional double bestBid = 5;
+    /**
+     * <code>optional double bestBid = 5;</code>
+     */
+    boolean hasBestBid();
+    /**
+     * <code>optional double bestBid = 5;</code>
+     */
+    double getBestBid();
+
+    // optional double bestOffer = 6;
+    /**
+     * <code>optional double bestOffer = 6;</code>
+     */
+    boolean hasBestOffer();
+    /**
+     * <code>optional double bestOffer = 6;</code>
+     */
+    double getBestOffer();
+
+    // optional int64 trades = 7;
+    /**
+     * <code>optional int64 trades = 7;</code>
+     */
+    boolean hasTrades();
+    /**
+     * <code>optional int64 trades = 7;</code>
+     */
+    long getTrades();
+
+    // optional double vwap = 8;
+    /**
+     * <code>optional double vwap = 8;</code>
+     */
+    boolean hasVwap();
+    /**
+     * <code>optional double vwap = 8;</code>
+     */
+    double getVwap();
+
+    // optional double notional = 9;
+    /**
+     * <code>optional double notional = 9;</code>
+     */
+    boolean hasNotional();
+    /**
+     * <code>optional double notional = 9;</code>
+     */
+    double getNotional();
+  }
+  /**
+   * Protobuf type {@code org.gnw.mktsim.common.msg.MD_TopOfBookRespMsg}
+   */
+  public static final class MD_TopOfBookRespMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements MD_TopOfBookRespMsgOrBuilder {
+    // Use MD_TopOfBookRespMsg.newBuilder() to construct.
+    private MD_TopOfBookRespMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MD_TopOfBookRespMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MD_TopOfBookRespMsg defaultInstance;
+    public static MD_TopOfBookRespMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MD_TopOfBookRespMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MD_TopOfBookRespMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              org.gnw.mktsim.common.msg.Messages.Sender.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = sender_.toBuilder();
+              }
+              sender_ = input.readMessage(org.gnw.mktsim.common.msg.Messages.Sender.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(sender_);
+                sender_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              symbol_ = input.readBytes();
+              break;
+            }
+            case 25: {
+              bitField0_ |= 0x00000004;
+              lastPrice_ = input.readDouble();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              volume_ = input.readInt64();
+              break;
+            }
+            case 41: {
+              bitField0_ |= 0x00000010;
+              bestBid_ = input.readDouble();
+              break;
+            }
+            case 49: {
+              bitField0_ |= 0x00000020;
+              bestOffer_ = input.readDouble();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              trades_ = input.readInt64();
+              break;
+            }
+            case 65: {
+              bitField0_ |= 0x00000080;
+              vwap_ = input.readDouble();
+              break;
+            }
+            case 73: {
+              bitField0_ |= 0x00000100;
+              notional_ = input.readDouble();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg.class, org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MD_TopOfBookRespMsg> PARSER =
+        new com.google.protobuf.AbstractParser<MD_TopOfBookRespMsg>() {
+      public MD_TopOfBookRespMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MD_TopOfBookRespMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MD_TopOfBookRespMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .org.gnw.mktsim.common.msg.Sender sender = 1;
+    public static final int SENDER_FIELD_NUMBER = 1;
+    private org.gnw.mktsim.common.msg.Messages.Sender sender_;
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    public boolean hasSender() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    public org.gnw.mktsim.common.msg.Messages.Sender getSender() {
+      return sender_;
+    }
+    /**
+     * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+     */
+    public org.gnw.mktsim.common.msg.Messages.SenderOrBuilder getSenderOrBuilder() {
+      return sender_;
+    }
+
+    // required string symbol = 2;
+    public static final int SYMBOL_FIELD_NUMBER = 2;
+    private java.lang.Object symbol_;
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    public boolean hasSymbol() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    public java.lang.String getSymbol() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          symbol_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string symbol = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSymbolBytes() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        symbol_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required double lastPrice = 3;
+    public static final int LASTPRICE_FIELD_NUMBER = 3;
+    private double lastPrice_;
+    /**
+     * <code>required double lastPrice = 3;</code>
+     */
+    public boolean hasLastPrice() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required double lastPrice = 3;</code>
+     */
+    public double getLastPrice() {
+      return lastPrice_;
+    }
+
+    // required int64 volume = 4;
+    public static final int VOLUME_FIELD_NUMBER = 4;
+    private long volume_;
+    /**
+     * <code>required int64 volume = 4;</code>
+     */
+    public boolean hasVolume() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int64 volume = 4;</code>
+     */
+    public long getVolume() {
+      return volume_;
+    }
+
+    // optional double bestBid = 5;
+    public static final int BESTBID_FIELD_NUMBER = 5;
+    private double bestBid_;
+    /**
+     * <code>optional double bestBid = 5;</code>
+     */
+    public boolean hasBestBid() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional double bestBid = 5;</code>
+     */
+    public double getBestBid() {
+      return bestBid_;
+    }
+
+    // optional double bestOffer = 6;
+    public static final int BESTOFFER_FIELD_NUMBER = 6;
+    private double bestOffer_;
+    /**
+     * <code>optional double bestOffer = 6;</code>
+     */
+    public boolean hasBestOffer() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional double bestOffer = 6;</code>
+     */
+    public double getBestOffer() {
+      return bestOffer_;
+    }
+
+    // optional int64 trades = 7;
+    public static final int TRADES_FIELD_NUMBER = 7;
+    private long trades_;
+    /**
+     * <code>optional int64 trades = 7;</code>
+     */
+    public boolean hasTrades() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int64 trades = 7;</code>
+     */
+    public long getTrades() {
+      return trades_;
+    }
+
+    // optional double vwap = 8;
+    public static final int VWAP_FIELD_NUMBER = 8;
+    private double vwap_;
+    /**
+     * <code>optional double vwap = 8;</code>
+     */
+    public boolean hasVwap() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional double vwap = 8;</code>
+     */
+    public double getVwap() {
+      return vwap_;
+    }
+
+    // optional double notional = 9;
+    public static final int NOTIONAL_FIELD_NUMBER = 9;
+    private double notional_;
+    /**
+     * <code>optional double notional = 9;</code>
+     */
+    public boolean hasNotional() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional double notional = 9;</code>
+     */
+    public double getNotional() {
+      return notional_;
+    }
+
+    private void initFields() {
+      sender_ = org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance();
+      symbol_ = "";
+      lastPrice_ = 0D;
+      volume_ = 0L;
+      bestBid_ = 0D;
+      bestOffer_ = 0D;
+      trades_ = 0L;
+      vwap_ = 0D;
+      notional_ = 0D;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasSender()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSymbol()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLastPrice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasVolume()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getSender().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, sender_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getSymbolBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeDouble(3, lastPrice_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt64(4, volume_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeDouble(5, bestBid_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeDouble(6, bestOffer_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt64(7, trades_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeDouble(8, vwap_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeDouble(9, notional_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, sender_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getSymbolBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, lastPrice_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, volume_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(5, bestBid_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(6, bestOffer_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(7, trades_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(8, vwap_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(9, notional_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code org.gnw.mktsim.common.msg.MD_TopOfBookRespMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg.class, org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg.Builder.class);
+      }
+
+      // Construct using org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSenderFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (senderBuilder_ == null) {
+          sender_ = org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance();
+        } else {
+          senderBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        symbol_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        lastPrice_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        volume_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        bestBid_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        bestOffer_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        trades_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        vwap_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        notional_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.gnw.mktsim.common.msg.Messages.internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_descriptor;
+      }
+
+      public org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg getDefaultInstanceForType() {
+        return org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg.getDefaultInstance();
+      }
+
+      public org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg build() {
+        org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg buildPartial() {
+        org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg result = new org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (senderBuilder_ == null) {
+          result.sender_ = sender_;
+        } else {
+          result.sender_ = senderBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.symbol_ = symbol_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.lastPrice_ = lastPrice_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.volume_ = volume_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.bestBid_ = bestBid_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.bestOffer_ = bestOffer_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.trades_ = trades_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.vwap_ = vwap_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.notional_ = notional_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg) {
+          return mergeFrom((org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg other) {
+        if (other == org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg.getDefaultInstance()) return this;
+        if (other.hasSender()) {
+          mergeSender(other.getSender());
+        }
+        if (other.hasSymbol()) {
+          bitField0_ |= 0x00000002;
+          symbol_ = other.symbol_;
+          onChanged();
+        }
+        if (other.hasLastPrice()) {
+          setLastPrice(other.getLastPrice());
+        }
+        if (other.hasVolume()) {
+          setVolume(other.getVolume());
+        }
+        if (other.hasBestBid()) {
+          setBestBid(other.getBestBid());
+        }
+        if (other.hasBestOffer()) {
+          setBestOffer(other.getBestOffer());
+        }
+        if (other.hasTrades()) {
+          setTrades(other.getTrades());
+        }
+        if (other.hasVwap()) {
+          setVwap(other.getVwap());
+        }
+        if (other.hasNotional()) {
+          setNotional(other.getNotional());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSender()) {
+          
+          return false;
+        }
+        if (!hasSymbol()) {
+          
+          return false;
+        }
+        if (!hasLastPrice()) {
+          
+          return false;
+        }
+        if (!hasVolume()) {
+          
+          return false;
+        }
+        if (!getSender().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.gnw.mktsim.common.msg.Messages.MD_TopOfBookRespMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .org.gnw.mktsim.common.msg.Sender sender = 1;
+      private org.gnw.mktsim.common.msg.Messages.Sender sender_ = org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.gnw.mktsim.common.msg.Messages.Sender, org.gnw.mktsim.common.msg.Messages.Sender.Builder, org.gnw.mktsim.common.msg.Messages.SenderOrBuilder> senderBuilder_;
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public boolean hasSender() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public org.gnw.mktsim.common.msg.Messages.Sender getSender() {
+        if (senderBuilder_ == null) {
+          return sender_;
+        } else {
+          return senderBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public Builder setSender(org.gnw.mktsim.common.msg.Messages.Sender value) {
+        if (senderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          sender_ = value;
+          onChanged();
+        } else {
+          senderBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public Builder setSender(
+          org.gnw.mktsim.common.msg.Messages.Sender.Builder builderForValue) {
+        if (senderBuilder_ == null) {
+          sender_ = builderForValue.build();
+          onChanged();
+        } else {
+          senderBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public Builder mergeSender(org.gnw.mktsim.common.msg.Messages.Sender value) {
+        if (senderBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              sender_ != org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance()) {
+            sender_ =
+              org.gnw.mktsim.common.msg.Messages.Sender.newBuilder(sender_).mergeFrom(value).buildPartial();
+          } else {
+            sender_ = value;
+          }
+          onChanged();
+        } else {
+          senderBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public Builder clearSender() {
+        if (senderBuilder_ == null) {
+          sender_ = org.gnw.mktsim.common.msg.Messages.Sender.getDefaultInstance();
+          onChanged();
+        } else {
+          senderBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public org.gnw.mktsim.common.msg.Messages.Sender.Builder getSenderBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getSenderFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      public org.gnw.mktsim.common.msg.Messages.SenderOrBuilder getSenderOrBuilder() {
+        if (senderBuilder_ != null) {
+          return senderBuilder_.getMessageOrBuilder();
+        } else {
+          return sender_;
+        }
+      }
+      /**
+       * <code>required .org.gnw.mktsim.common.msg.Sender sender = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.gnw.mktsim.common.msg.Messages.Sender, org.gnw.mktsim.common.msg.Messages.Sender.Builder, org.gnw.mktsim.common.msg.Messages.SenderOrBuilder> 
+          getSenderFieldBuilder() {
+        if (senderBuilder_ == null) {
+          senderBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.gnw.mktsim.common.msg.Messages.Sender, org.gnw.mktsim.common.msg.Messages.Sender.Builder, org.gnw.mktsim.common.msg.Messages.SenderOrBuilder>(
+                  sender_,
+                  getParentForChildren(),
+                  isClean());
+          sender_ = null;
+        }
+        return senderBuilder_;
+      }
+
+      // required string symbol = 2;
+      private java.lang.Object symbol_ = "";
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public boolean hasSymbol() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public java.lang.String getSymbol() {
+        java.lang.Object ref = symbol_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          symbol_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSymbolBytes() {
+        java.lang.Object ref = symbol_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          symbol_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public Builder setSymbol(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public Builder clearSymbol() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        symbol_ = getDefaultInstance().getSymbol();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string symbol = 2;</code>
+       */
+      public Builder setSymbolBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required double lastPrice = 3;
+      private double lastPrice_ ;
+      /**
+       * <code>required double lastPrice = 3;</code>
+       */
+      public boolean hasLastPrice() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required double lastPrice = 3;</code>
+       */
+      public double getLastPrice() {
+        return lastPrice_;
+      }
+      /**
+       * <code>required double lastPrice = 3;</code>
+       */
+      public Builder setLastPrice(double value) {
+        bitField0_ |= 0x00000004;
+        lastPrice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double lastPrice = 3;</code>
+       */
+      public Builder clearLastPrice() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        lastPrice_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // required int64 volume = 4;
+      private long volume_ ;
+      /**
+       * <code>required int64 volume = 4;</code>
+       */
+      public boolean hasVolume() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int64 volume = 4;</code>
+       */
+      public long getVolume() {
+        return volume_;
+      }
+      /**
+       * <code>required int64 volume = 4;</code>
+       */
+      public Builder setVolume(long value) {
+        bitField0_ |= 0x00000008;
+        volume_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 volume = 4;</code>
+       */
+      public Builder clearVolume() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        volume_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional double bestBid = 5;
+      private double bestBid_ ;
+      /**
+       * <code>optional double bestBid = 5;</code>
+       */
+      public boolean hasBestBid() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional double bestBid = 5;</code>
+       */
+      public double getBestBid() {
+        return bestBid_;
+      }
+      /**
+       * <code>optional double bestBid = 5;</code>
+       */
+      public Builder setBestBid(double value) {
+        bitField0_ |= 0x00000010;
+        bestBid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double bestBid = 5;</code>
+       */
+      public Builder clearBestBid() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        bestBid_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // optional double bestOffer = 6;
+      private double bestOffer_ ;
+      /**
+       * <code>optional double bestOffer = 6;</code>
+       */
+      public boolean hasBestOffer() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional double bestOffer = 6;</code>
+       */
+      public double getBestOffer() {
+        return bestOffer_;
+      }
+      /**
+       * <code>optional double bestOffer = 6;</code>
+       */
+      public Builder setBestOffer(double value) {
+        bitField0_ |= 0x00000020;
+        bestOffer_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double bestOffer = 6;</code>
+       */
+      public Builder clearBestOffer() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        bestOffer_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // optional int64 trades = 7;
+      private long trades_ ;
+      /**
+       * <code>optional int64 trades = 7;</code>
+       */
+      public boolean hasTrades() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional int64 trades = 7;</code>
+       */
+      public long getTrades() {
+        return trades_;
+      }
+      /**
+       * <code>optional int64 trades = 7;</code>
+       */
+      public Builder setTrades(long value) {
+        bitField0_ |= 0x00000040;
+        trades_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 trades = 7;</code>
+       */
+      public Builder clearTrades() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        trades_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional double vwap = 8;
+      private double vwap_ ;
+      /**
+       * <code>optional double vwap = 8;</code>
+       */
+      public boolean hasVwap() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional double vwap = 8;</code>
+       */
+      public double getVwap() {
+        return vwap_;
+      }
+      /**
+       * <code>optional double vwap = 8;</code>
+       */
+      public Builder setVwap(double value) {
+        bitField0_ |= 0x00000080;
+        vwap_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double vwap = 8;</code>
+       */
+      public Builder clearVwap() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        vwap_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // optional double notional = 9;
+      private double notional_ ;
+      /**
+       * <code>optional double notional = 9;</code>
+       */
+      public boolean hasNotional() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional double notional = 9;</code>
+       */
+      public double getNotional() {
+        return notional_;
+      }
+      /**
+       * <code>optional double notional = 9;</code>
+       */
+      public Builder setNotional(double value) {
+        bitField0_ |= 0x00000100;
+        notional_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double notional = 9;</code>
+       */
+      public Builder clearNotional() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        notional_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:org.gnw.mktsim.common.msg.MD_TopOfBookRespMsg)
+    }
+
+    static {
+      defaultInstance = new MD_TopOfBookRespMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:org.gnw.mktsim.common.msg.MD_TopOfBookRespMsg)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_org_gnw_mktsim_common_msg_Timestamp_descriptor;
   private static
@@ -7538,6 +9495,16 @@ public final class Messages {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_gnw_mktsim_common_msg_MarketStatusMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7576,8 +9543,15 @@ public final class Messages {
       "\0132!.org.gnw.mktsim.common.msg.Sender\022A\n\006" +
       "status\030\002 \002(\01621.org.gnw.mktsim.common.msg" +
       ".MarketStatusMsg.Status\"+\n\006Status\022\n\n\006CLO" +
-      "SED\020\000\022\010\n\004OPEN\020\001\022\013\n\007AUCTION\020\002B\033\n\031org.gnw.",
-      "mktsim.common.msg"
+      "SED\020\000\022\010\n\004OPEN\020\001\022\013\n\007AUCTION\020\002\"W\n\022MD_TopOf",
+      "BookReqMsg\0221\n\006sender\030\001 \002(\0132!.org.gnw.mkt" +
+      "sim.common.msg.Sender\022\016\n\006symbol\030\002 \002(\t\"\317\001" +
+      "\n\023MD_TopOfBookRespMsg\0221\n\006sender\030\001 \002(\0132!." +
+      "org.gnw.mktsim.common.msg.Sender\022\016\n\006symb" +
+      "ol\030\002 \002(\t\022\021\n\tlastPrice\030\003 \002(\001\022\016\n\006volume\030\004 " +
+      "\002(\003\022\017\n\007bestBid\030\005 \001(\001\022\021\n\tbestOffer\030\006 \001(\001\022" +
+      "\016\n\006trades\030\007 \001(\003\022\014\n\004vwap\030\010 \001(\001\022\020\n\010notiona" +
+      "l\030\t \001(\001B\033\n\031org.gnw.mktsim.common.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7632,6 +9606,18 @@ public final class Messages {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_gnw_mktsim_common_msg_MarketStatusMsg_descriptor,
               new java.lang.String[] { "Sender", "Status", });
+          internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_descriptor =
+            getDescriptor().getMessageTypes().get(8);
+          internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookReqMsg_descriptor,
+              new java.lang.String[] { "Sender", "Symbol", });
+          internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_descriptor =
+            getDescriptor().getMessageTypes().get(9);
+          internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_org_gnw_mktsim_common_msg_MD_TopOfBookRespMsg_descriptor,
+              new java.lang.String[] { "Sender", "Symbol", "LastPrice", "Volume", "BestBid", "BestOffer", "Trades", "Vwap", "Notional", });
           return null;
         }
       };

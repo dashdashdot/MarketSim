@@ -67,3 +67,20 @@ message MarketStatusMsg {
 	required Sender sender = 1;
 	required Status status = 2;
 }
+
+message MD_TopOfBookReqMsg {
+	required Sender sender = 1;
+	required string symbol = 2;
+}
+
+message MD_TopOfBookRespMsg {
+	required Sender sender = 1;
+	required string symbol = 2;
+	required double lastPrice = 3;
+	required int64 volume = 4;
+	optional double bestBid = 5;
+	optional double bestOffer = 6;
+	optional int64 trades = 7;
+	optional double vwap = 8;
+	optional double notional = 9;
+}

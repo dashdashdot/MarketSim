@@ -36,6 +36,11 @@ public class Trade extends OrderBookEvent {
         this.clientOrderId_sell = clientOrderId_sell;
     }
 
+    public Trade(TradeMsg pb) {
+        this(pb.getSender().getSenderId(), pb.getSymbol(), pb.getQuantity(), pb.getPrice(), pb.getClientIdBuy(),
+                pb.getClientIdSell(), pb.getClientOrderIdBuy(), pb.getClientOrderIdSell());
+    }
+
     public String toString() {
         return String.format("%s: Trade of %,d at %,.2f between %s (buyer) and %s (seller)", this.getSymbol(),
                 quantity, price, clientId_buy, clientId_sell);
